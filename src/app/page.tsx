@@ -1,3 +1,5 @@
+'use client';  // 声明这是一个客户端组件
+
 import Head from 'next/head';
 
 export default function Home() {
@@ -36,6 +38,36 @@ export default function Home() {
     strong: {
       color: '#e74c3c',
     },
+    link: {
+      display: 'inline-block',
+      marginTop: '20px',
+      padding: '10px 20px',
+      backgroundColor: '#3498db',
+      color: '#fff',
+      borderRadius: '5px',
+      textDecoration: 'none',
+      cursor: 'pointer',
+    },
+  };
+
+  // 点击链接时发起 HTTP GET 请求
+  const handleLinkClick = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/test', {
+        method: 'GET',
+        mode: 'cors', // 确保启用跨域请求
+      });
+      const data = await response.text();
+      alert(`Response data: ${JSON.stringify(data)}`); // 使用 alert 展示响应结果
+    } catch (error) {
+      if (error instanceof Error) {
+        // 如果 error 是 Error 类型，则显示 error.message
+        alert(`Error fetching data: ${error.message}`);
+      } else {
+        // 如果不是 Error 类型，展示通用错误信息
+        alert('An unknown error occurred.');
+      }
+    }
   };
 
   return (
@@ -58,6 +90,10 @@ export default function Home() {
             <strong style={styles.strong}>Use action verbs:</strong> Start bullet points with strong action verbs like "developed" or "led."
           </li>
         </ul>
+        {/* 链接，点击时调用 handleLinkClick */}
+        <a style={styles.link} onClick={handleLinkClick}>
+          Fetch Data
+        </a>
       </main>
     </div>
   );
