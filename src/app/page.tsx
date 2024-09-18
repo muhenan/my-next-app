@@ -1,101 +1,64 @@
-import Image from "next/image";
+import Head from 'next/head';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  // 样式对象
+  const styles = {
+    container: {
+      maxWidth: '800px',
+      margin: '50px auto',
+      padding: '20px',
+      backgroundColor: '#fff',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      borderRadius: '8px',
+    },
+    title: {
+      fontSize: '2.5em',
+      color: '#2c3e50',
+      textAlign: 'center' as const,
+      marginBottom: '20px',
+      fontWeight: 'bold',
+    },
+    paragraph: {
+      fontSize: '1.2em',
+      color: '#555',
+      marginBottom: '20px',
+      textAlign: 'justify' as const,
+    },
+    list: {
+      listStyleType: 'square',
+      paddingLeft: '20px',
+    },
+    listItem: {
+      fontSize: '1.1em',
+      color: '#34495e',
+      marginBottom: '10px',
+    },
+    strong: {
+      color: '#e74c3c',
+    },
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  return (
+    <div>
+      <Head>
+        <title>Resume Optimizer</title>
+        <meta name="description" content="A simple tool to help you optimize and improve your resume." />
+      </Head>
+      <main style={styles.container}>
+        <h1 style={styles.title}>Welcome to Resume Optimizer</h1>
+        <p style={styles.paragraph}>Here are some tips for optimizing your resume:</p>
+        <ul style={styles.list}>
+          <li style={styles.listItem}>
+            <strong style={styles.strong}>Clear and concise:</strong> Make sure your resume is easy to read and highlights your key achievements.
+          </li>
+          <li style={styles.listItem}>
+            <strong style={styles.strong}>Tailor to the job:</strong> Customize your resume for each position you apply for.
+          </li>
+          <li style={styles.listItem}>
+            <strong style={styles.strong}>Use action verbs:</strong> Start bullet points with strong action verbs like "developed" or "led."
+          </li>
+        </ul>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
